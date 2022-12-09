@@ -1,0 +1,10 @@
+String + String does concatenation
+String * Natural repeats the Natural
+Assign bool to natural is allowed
+Assign natural to bool is allowed
+Assign char to natural is allowed
+Assign natural to char is allowed
+Assign natural to real is allowed
+No other types are allowed to be assigned to others outside of their own
+Dividing by zero is an error
+Modulo operating by zero is an error
