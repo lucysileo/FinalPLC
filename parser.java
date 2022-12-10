@@ -1,6 +1,7 @@
 import com.github.parser;
 import com.github.main;
 import com.github.token;
+//import com.github.lexer;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
@@ -22,46 +23,46 @@ public class parsers{
   }
   
   public boolean trial1() throws IOException{
-    boolean isBool = false;
+    boolean isRight = false;
     if(input()){
-      isBool = (trial1());
+      isRight = (trial1());
     }
     stream.close();
-    return isBool;
+    return isRight;
   }
   
   public boolean trial2() throws IOException{
-    boolean isBool = false;
+    boolean isRight = false;
     int secTrial = integer;
-    this.tokens.add(lexer.nextToken(stream));
+    tokens.add(lexer.nextToken(stream));
     if(toksens.get(integer).getLessema().equals("Semicol")){
       integer++;
       if(input()){
         if(trial1()){
-          isBool = true;
+          isRight = true;
         }else{
           integer = secTrial;
         }
       }else{
         integer = secTrial;
     }else{
-      isBool = true;
-   return isBool;
+      isRight = true;
+   return isRight;
    }
   }
   
   public boolean input() throws IOException{
-    boolean isBool = false;
+    boolean isRight = false;
     int secTrial = integer;
-    this.tokens.add(lexer.nextToken(stream));
-    if(this.tokens.get(integer).getClasse().equals("IF")){
+    tokens.add(lexer.nextToken(stream));
+    if(tokens.get(integer).getClasse().equals("IF")){
       integer++;
-      if(expression()){
-        this.tokens.add(lexer.nextToken(stream));
-        if(this.tokens.get(integer).getClasse().equals("THEN")){
+      if(expression1()){
+        tokens.add(lexer.nextToken(stream));
+        if(tokens.get(integer).getClasse().equals("THEN")){
           integer++;
           if(input()){
-            isBool = true;
+            isRight = true;
           }else{
             integer = secTrial;
           }
@@ -70,50 +71,50 @@ public class parsers{
     }else{
       if(tokens.get(integer).getClasse().contains("ID:")){
         integer++;
-        this.tokens.add(lexer.nextToken(stream));
-        if(this.tokens.get(integer).getLessema().equals("ASSIGN"){
+        tokens.add(lexer.nextToken(stream));
+        if(tokens.get(integer).getLessema().equals("ASSIGN"){
           integer++;
-          if(expression()){
-            isBool = true;
+          if(expression1()){
+            isRight = true;
           }else integer = secTrial;
         }else integer = secTrial;
       }else integer = secTrial;
     }
-    return isBool;
+    return isRight;
   }
     
-  public boolean expression() throws IOException{
-    boolean isBool = false;
+  public boolean expression1() throws IOException{
+    boolean isRight = false;
     int secTrial = integer;
     if(tokenTerms()){
-      if(expression1()){
-        isBool = true;
+      if(expression2()){
+        isRight = true;
       }else integer = secTrial;
     }else integer = secTrial;
-    return isBool;
+    return isRight;
   }
            
-  public boolean expression1() throws IOException{
-    boolean isBool = false;
+  public boolean expression2() throws IOException{
+    boolean isRight = false;
     int secTrial = integer;
-    this.tokens.add(lexer.nextToken(stream));
+    tokens.add(lexer.nextToken(stream));
     if(tokens.get(integer).getClasse().equals("RELOP")){
       integer++;
       if(tokenTerms()){
-        isBool = true;
+        isRight = true;
       }else integer = secTrial;
-    }else isBool = true;
-    return isBool;
+    }else isRight = true;
+    return isRight;
   }
            
   public boolean tokenTerms() throws IOException{
-    boolean isBool = false;
-    this.tokens.add(lexer.nextToken(stream));
+    boolean isRight = false;
+    tokens.add(lexer.nextToken(stream));
     String classe = tokens.get(integer).getClasse();
     if(classe.contains("ID:") || classe.contains("CONST") || classe.equals("TRUE") || classe.equals("FALSE")){
       integer++;
-      isBool = true;
+      isRight = true;
     }
-    return isBool;
+    return isRight;
   }
 }
