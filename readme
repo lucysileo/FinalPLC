@@ -2,7 +2,20 @@
 
 10.
 3 valid statements with 7 tokens to show these rules failing or passing semantic rule
+isBool = false;
+int target = 10;
+target + 4 = target;
 
+int secTrial = 10;
+int target = secTrial;
+if(secTrial < 9){
+  isBool = true;
+}
+int term;
+term = 3;
+if(term <= 10){
+  isBool = true;
+}else isBool = false;
 
 11.
 Axiomatic Semantics
