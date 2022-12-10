@@ -1,0 +1,15 @@
+Selection statement
+<selection> -> <operator>|<char>|
+<operator -> '.'
+<char> -> <expression>
+
+Expression statement
+<expression> -> <var|<token> {'^'|'>'|'<'|'+'|'-'|'*'|'/'}
+
+Loop statement
+<loop> -> <while>|<for>
+<while> -> '('<token> ')'
+<for> -> '('<token>')'
+
+Redefine expression statement so it can return a bool solution
+<expression> -> <var|<token>|<isBool> {'^'|'>'|'<'|'+'|'-'|'*'|'/'}
